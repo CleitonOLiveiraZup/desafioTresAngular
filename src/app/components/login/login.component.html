@@ -1,0 +1,47 @@
+<header>
+  <form [formGroup]="loginForm" class="form mt-4">
+    <div class="form-group">
+      <img src="assets/prime.svg" />
+      <input
+        id="nome"
+        [(ngModel)]="usuario.nome"
+        formControlName="userName"
+        class="form-control"
+        placeholder="user name"
+        autofocus
+      />
+      <small
+        *ngIf="loginForm.get('userName').errors?.required"
+        class="text-danger d-block mt-2"
+      >
+        Usuario Obrigatorio!
+      </small>
+    </div>
+
+    <div class="form-group">
+      <input
+        id="senha"
+        [(ngModel)]="usuario.senha"
+        formControlName="password"
+        type="password"
+        class="form-control"
+        placeholder="password"
+      />
+      <small
+        *ngIf="loginForm.get('password').errors?.required"
+        class="text-danger d-block mt-2"
+      >
+        Senha Obrigatorio!
+      </small>
+    </div>
+
+    <button
+      [disabled]="loginForm.invalid"
+      type="submit"
+      class="btn btn-primary btn-block"
+      (click)="fazerLogin()"
+    >
+      login
+    </button>
+  </form>
+</header>
